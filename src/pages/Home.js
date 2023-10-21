@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
 
+
 import axios from 'axios';
 import Color from "../components/Color";
 
@@ -217,19 +218,30 @@ const getAllProducts = async (e) => {
         </div>
       </Container>
 
-      <Container class1="special-wrapper py-5 home-wrapper-2">
-        <div className="row"  style={{ position:'relative', alignItems:'normal', imageSize:'50%'}}>
-          <div className="col-12" >
-            <h3 className="section-heading" >Special Products</h3>
+      <Container class1="popular-wrapper py-5 home-wrapper-2">
+        <div className="row">
+          <div className="col-12">
+            <h3 className="section-heading"> Special Products</h3>
           </div>
         </div>
+        
         <div className="row" style={{ position:'relative', alignItems:'normal', tabSize:'50%'}} >  
         {
             products.special ?
             products.special.map((product) => (
-        <SpecialProduct name={product.p_name}
-        //  description={product.p_des}
-         price = {product.p_price}img={'http://127.0.0.1:8000/'+product.p_image} />
+        <SpecialProduct
+         img={'http://127.0.0.1:8000/'+product.p_image}
+         name={product.p_name}
+        key={product.p_id}
+        description={product.p_des}
+         price = {product.p_price}
+         p_id={product.p_id}
+         title={product.p_title}
+         />
+
+
+
+
           ))          
           :
           'Loading Data....'

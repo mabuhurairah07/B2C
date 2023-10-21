@@ -3,17 +3,7 @@ import React ,{useState} from "react";
 // import "~slick-carousel/slick/slick-theme.css";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLocation } from "react-router-dom";
-import prodcompare from "../images/prodcompare.svg";
-import wish from "../images/wish.svg";
-import wishlist from "../images/wishlist.svg";
-import watch from "../images/watch.jpg";
-import watch2 from "../images/watch-1.avif";
-import CWatch from "../images/CWatch.jpg";
-import addcart from "../images/add-cart.svg";
-import view from "../images/view.svg";
-import iphone from "../images/iphone.jpg";
-import sam from "../images/sam.jpg";
-import suitCase from "../images/suitCase.jpg";
+
 import axios from "axios";
 import Swal from 'sweetalert2'
 // import { useLocation } from "react-router-dom";

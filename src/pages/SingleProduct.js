@@ -320,6 +320,18 @@ const getRecommendedProducts = async (e) => {
                   <h3 className="product-heading">Brand :</h3>
                   <p className="product-data">{product.p_brand}</p>
                 </div>
+
+                <div className="d-flex gap-10 align-items-center my-2">
+                  <h3 className="product-heading">Total Price :</h3>
+                  <p className="product-data">{product.p_price}</p>
+                </div>
+                <div className="d-flex gap-10 align-items-center my-2">
+                  <h3 className="product-heading">Discount Price :</h3>
+                  <p className="product-data">{product.disc_price}</p>
+                </div>
+
+
+
                 <div className="d-flex gap-10 align-items-center my-2">
                   <h3 className="product-heading">Category :</h3>
                   {product.category && product.category.cat_name ?
@@ -334,21 +346,9 @@ const getRecommendedProducts = async (e) => {
                   <p className="product-data">{product.p_status==1?'In Stock':'Out of Stock'}</p> 
                       
                 </div>
-                <div className="d-flex gap-10 flex-column mt-2 mb-3">
-                  <h3 className="product-heading">Color :</h3>
-                  <Color />
-                </div>
+                
                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
-                  <h3 className="product-heading">Quantity :</h3>
-                  <div className="">
-                    <input
-                      name="quantity"
-                      className="form-control"
-                      style={{ width: "50px" }}
-                      id=""
-                      value={1}
-                    />
-                  </div>
+                 
                   <div className="d-flex align-items-center justify-content-center gap-30 ms-5">
                     <button
                       className="button border-0 ml-5 mb-4"
@@ -493,9 +493,7 @@ const getRecommendedProducts = async (e) => {
             </div>
             <div className="modal-body py-0">
               <div className="d-flex align-items-center">
-                <div className="flex-grow-1 w-50">
-                  <img src={watch} className="img-fluid" alt="product imgae" />
-                </div>
+                
                 <div className="d-flex flex-column flex-grow-1 w-50">
                   <h6 className="mb-3">Apple Watch</h6>
                   <p className="mb-1">Quantity: asgfd</p>

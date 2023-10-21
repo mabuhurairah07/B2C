@@ -1,6 +1,6 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2'
 
@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 ;
 
 const SpecialProduct = (props) => {
+  const { grid } = props;
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
   const handleAddToCart= async ()=>{
@@ -54,31 +55,55 @@ const SpecialProduct = (props) => {
 
   }
   
-  
+  let location = useLocation();
+
   return (
     <>
-      <div className="col-6 mb-3">
-        <div className="special-product-card">
-          <div className="d-flex justify-content-between" style={{height:'200px '}}>
-            <div>
-              
-
-             <img src={props.img}  className="img-fluid" alt={props.name}  style={{ 
+      <div
+        className={`p-2 ${
+          location.pathname == "/product" ? `gr-${grid}` : "col-3"
+        } `}
+      >
+        <Link
+          to={`${
+            location.pathname == "/"
+              ? `/product/${props.p_id}`
+              : location.pathname == "/product/:id"
+              ? `/product/${props.p_id}`
+              : `${props.p_id}`
+          }`}
+          className="product-card position-relative"
+        >
+          <div className="wishlist-icon position-absolute">
+          
+          </div>
+          <div className="product-image position-sticky">
+          
+                <div>
+               <img src={props.img}  className="img-fluid" alt={props.name}  style={{ 
     width: '100%', 
     height: '100%', 
     borderRadius: '10px' ,
     paddingLeft: '30px'
   }} 
 />
-            </div>
-            <div className="special-product-content" style={{ 
-  backgroundColor: '#f2f2f2', 
-  padding: '10px', 
-  borderRadius: '10px',
-  paddingLeft : '10%',
-  width : '50%',
-  color : 'grey'
-}}>
+                </div>
+           
+          </div>
+          <div className="product-details position-relative">
+              <h6 className="brand">{props.name}</h6>
+              <h5 className="product-title">
+              {props.title}
+                
+              </h5>
+              <p className={`description ${grid === 12 ? "d-block" : "d-none"}`}>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                blanditiis praesentium voluptatum deleniti atque corrupti quos
+                dolores et quas molestias excepturi sint occaecati cupiditate non
+                provident, similique sunt...
+              </p>
+              <p className="price">{props.price}</p>
+
               <h5 className="brand">{props.name}</h5>
               <h6 className="title" style={{Color: 'black'}}>
                 {props.description}
@@ -90,32 +115,26 @@ const SpecialProduct = (props) => {
                 edit={false}
                 activeColor="#ffd700"
               />
-              <p className="price">
-                {/* <span className="red-p">$100</span> &nbsp; <strike>$200</strike> */}
-                ${props.price}
-                <div>
-                <button
+              
+
+          </div>
+          <div>
+          <button
                       className="button border-0 ml-5 mb-4"
-                      // data-bs-toggle="modal"
-                      // data-bs-target="#staticBackdrop"
+                     
                       type="button" 
                       onClick={handleAddToCart}
                     >
                       Add to Cart
                     </button>
-                  </div>
-              </p>
-              
-             
-            
-              
-             
-            </div>
           </div>
+
+        </Link>
         </div>
-      </div>
+      
     </>
   );
 };
+
 
 export default SpecialProduct;
