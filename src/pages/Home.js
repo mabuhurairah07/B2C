@@ -159,12 +159,13 @@ const getAllProducts = async (e) => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-1.webp"
+                src="images/AC.png"
                 className="img-fluid"
-                alt="famous" />
+                alt="famous"
+                style={{height: '360px'}} />
               <div className="famous-content position-absolute">
-                <h5>Big Screen</h5>
-                <h6>Smart Watch Series 7</h6>
+                <h5>Air Conditioner</h5>
+                <h6>Blue Star1</h6>
                 <p>From $399or $16.62/mo. for 24 mo.*</p>
               </div>
             </div>
@@ -200,13 +201,14 @@ const getAllProducts = async (e) => {
           <div className="col-3">
             <div className="famous-card position-relative">
               <img
-                src="images/famous-3.webp"
+                src="images/LCD.jpg"
                 className="img-fluid"
-                alt="famous" />
+                alt="famous"
+                style={{height:'360px', width:'100%'}} />
               <div className="famous-content position-absolute">
-                <h5 className="text-dark">home speakers</h5>
-                <h6 className="text-dark">Room-filling sound.</h6>
-                <p className="text-dark">
+                <h5 className="text-white">home speakers</h5>
+                <h6 className="text-white ">Room-filling sound.</h6>
+                <p className="text-white">
                   From $699 or $116.58/mo. for 12 mo.*
                 </p>
               </div>
