@@ -55,6 +55,14 @@ a {
   padding: 13px 33px;
   border-radius: 25px;
 }
+.button1 {
+  background-color: var(--color-232f3e);
+  color: white;
+  font-size: 14px;
+  padding: 12px 33px;
+  border-radius: 30px;
+  margin-left: 90px; 
+}
 .button:hover { 
   background-color: var(--color-febd69);
   color: #131921;

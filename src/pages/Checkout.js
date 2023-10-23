@@ -102,34 +102,87 @@ useEffect(() => {
   return (
     <>
       <Container class1="checkout-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-7">
-            <div className="checkout-left-data">
-              <h3 className="website-name">Easy Bay</h3>
-              <nav
-                style={{ "--bs-breadcrumb-divider": ">" }}
-                aria-label="breadcrumb"
-              >
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link className="text-dark total-price" to="/cart">
-                     Go Back To Cart
-                    </Link>
-                  </li>
-                 
-                 
-                
-                 
-                </ol>
-              </nav>
-              <h4 className="title total">Contact Information</h4>
-              <p className="user-details total">
-               EasyBay (EasyBay@gmail.com)
-              </p>
-              <h4 className="mb-3">Shipping Address</h4>
+        <div className="">
+          
+            <div className="col-12">
+            <div className="border-bottom py-4">
+            
+              <div className="d-flex gap-10 mb-2 align-align-items-center">
+
+
+              {
+  products.map((item) => {
+    return (
+      <>
+        {item.panel === 1 ? 
+          <div className="cart-col-1 gap-15 d-flex align-items-center">
+            <div className="w-25">
+              <img
+                className="img-fluid"
+                alt="product image"
+                src={process.env.REACT_APP_BACKEND_URL + item.product.p_image}
+                style={{height:'100px'}}
+              />
+            </div>
+            <br />
+            <div className="w-75" key={item.product.id}>
+              <p>{item.product.p_name}</p>
+
+              <br/><br/>
+              <h5 className="price">$ {item.product.p_price}</h5>
+              
+              {/* <p>Size: {item.product.size}</p>
+              <p>Color: {item.product.color}</p> */}
+            </div>
+{/* 
+            <div className="cart-col-2">
+                <h5 className="price">$ {item.product.p_price}</h5>
+              </div> */}
+             
+
+          </div>
+
+          
+
+
+
+          
+          : 'Loading'
+            } 
+            
+                  
+      </>
+    );
+  })
+}
+
+
+
+              </div>
+            </div>
+                  {/* <div className="border-bottom py-4">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="total">Subtotal</p>
+                      <p className="total-price">$ 500</p>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="mb-0 total">Shipping</p>
+                      <p className="mb-0 total-price">${500}</p>
+                    </div>
+                  </div> */}
+                  <div className="d-flex justify-content-between align-items-center border-bootom py-4">
+                    <h4 className="total">Total</h4>
+                    <h5 className="total-price">$500</h5>
+                  </div>
+           
+          
+
+
+                    <h1 className="mb-5" style={{paddingLeft: '38%', color:'#072a6e', backgroundColor:'#dae3e8'}}>Shipping Address</h1>
               <form
                 action=""
-                className="d-flex gap-15 flex-wrap justify-content-between"
+                className="d-flex gap-8 flex-wrap justify-content-between"
+                
               >
                 
                 <div className="flex-grow-1">
@@ -142,6 +195,7 @@ useEffect(() => {
                     className="form-control"
                     onChange={(e)=>setFirstName(e.target.value)}
                     value={firstname}
+                    required
                   />
                 </div>
                 <div className="flex-grow-1">
@@ -247,87 +301,21 @@ useEffect(() => {
                   />
                 </div>
                 <div className="w-100">
+                
                   <div className="d-flex justify-content-between align-items-center">
-                    <Link to="/cart" className="text-dark">
-                      <BiArrowBack className="me-2" />
-                      Return to Cart
-                    </Link>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          
-            <div className="col-5">
-            <div className="border-bottom py-4">
-              <div className="d-flex gap-10 mb-2 align-align-items-center">
 
-
-              {
-  products.map((item) => {
-    return (
-      <>
-        {item.panel === 1 ? 
-          <div className="cart-col-1 gap-15 d-flex align-items-center">
-            <div className="w-25">
-              <img
-                className="img-fluid"
-                alt="product image"
-                src={process.env.REACT_APP_BACKEND_URL + item.product.p_image}
-                style={{height:'100px'}}
-              />
-            </div>
-            <br />
-            <div className="w-75" key={item.product.id}>
-              <p>{item.product.p_name}</p>
-
-              <br/><br/>
-              <h5 className="price">$ {item.product.p_price}</h5>
-              
-              {/* <p>Size: {item.product.size}</p>
-              <p>Color: {item.product.color}</p> */}
-            </div>
-{/* 
-            <div className="cart-col-2">
-                <h5 className="price">$ {item.product.p_price}</h5>
-              </div> */}
-             
-
-          </div>
-
-          
-
-
-
-          
-          : 'Loading'
-            } 
-            
+                 
                   
-      </>
-    );
-  })
-}
-
-
-
-              </div>
-            </div>
-                  {/* <div className="border-bottom py-4">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="total">Subtotal</p>
-                      <p className="total-price">$ 500</p>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="mb-0 total">Shipping</p>
-                      <p className="mb-0 total-price">${500}</p>
-                    </div>
-                  </div> */}
-                  <div className="d-flex justify-content-between align-items-center border-bootom py-4">
-                    <h4 className="total">Total</h4>
-                    <h5 className="total-price">$500</h5>
+                    
+                    
+                   
+                    {/* <Link onClick={addOrder} className="button" style={{marginTop: '90PX', marginLeft: '380px'} } disabled={formDisabled} >
+                      Place Order
+                    </Link> */}
+                    
+                    
                   </div>
-           <div>
+                  <div>
   <label>
   <input
     type="radio"
@@ -339,7 +327,7 @@ useEffect(() => {
   Cash on Delivery
 </label>
 
-<label style={{ paddingLeft: "90px" }}>
+<label style={{ paddingLeft: "30px" }}>
   <input
     type="radio"
     name="paymentOption"
@@ -355,49 +343,63 @@ useEffect(() => {
       </div>
       {paymentOption === "Stripe" && (
       <fieldset>
-        <div className="form-group">
-          <label htmlFor="cardNumber">Card Number</label>
+      <div className="col-12">
+      <div className="form-group col-md-6">
+          <label htmlFor="cardNumber">Card Number <span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             id="cardNumber"
             className="form-control"
             onChange={(e)=>setCardNumber(e.target.value)}
+            required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="cvc">CVC</label>
+        <div className="form-group col-md-6">
+          <label htmlFor="cvc">CVC <span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             id="cvc"
             className="form-control"
             onChange={(e)=>setCvc(e.target.value)}
+            required
           />
         </div>
         <div className="form-row">
           <div className="form-group col-md-6">
-            <label htmlFor="expiryMonth">Expiry Month</label>
+            <label htmlFor="expiryMonth">Expiry Month <span style={{ color: 'red' }}>*</span></label>
             <input
               type="text"
               id="expiryMonth"
               className="form-control"
               onChange={(e)=>setExpirymonth(e.target.value)}
+              required
             />
           </div>
           <div className="form-group col-md-6">
-            <label htmlFor="expiryYear">Expiry Year</label>
+            <label htmlFor="expiryYear">Expiry Year <span style={{ color: 'red' }}>*</span></label>
             <input
               type="text"
               id="expiryYear"
               className="form-control"
               onChange={(e)=>setExpiryyear(e.target.value)}
+              required
             />
           </div>
         </div>
+        </div>
       </fieldset>
       )}
-            <Link onClick={addOrder} className="button" style={{marginTop: '90PX', marginLeft: '380px'} } disabled={formDisabled} >
+    
+                    <Link to="/cart" className="text-dark">
+                      <BiArrowBack className="me-2" />
+                      Return to Cart
+                    </Link>
+                    <Link onClick={addOrder} className="button1"   disabled={formDisabled} >
                       Place Order
                     </Link>
+                </div>
+                
+              </form>
                   </div>
               
         </div>

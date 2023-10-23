@@ -49,7 +49,13 @@ const Login = () => {
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
               <form action="" className="d-flex flex-column gap-15">
+              <label htmlFor="" style={{ display: 'block' }}>
+  User Name <span style={{ color: 'red' }}>*</span>
+</label>
                 <input class="form-control" placeholder="User Name" value={username} onChange={(e)=>setUserName(e.target.value)}/>
+                <label htmlFor="Password " style={{ display: 'block' }}>
+  Password <span style={{ color: 'red' }}>*</span>
+</label>
                 <input type="password" class="form-control" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 
                 <div>
