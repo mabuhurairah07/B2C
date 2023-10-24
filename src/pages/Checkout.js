@@ -26,9 +26,12 @@ const Checkout = () => {
   const [formDisabled, setFormDisabled] = useState(true);
   const [paymentOption, setPaymentOption] = useState("Cash");
 
+  const [quantity,setQuantity] = useState({});
+
   const [submit,setSubmit]=useState(0);
   const [number, setNumber] = useState(0);
   const [PAddress, setPAddress] = useState(0);
+  
 
 
 const addOrder = async ()=>{
@@ -131,8 +134,8 @@ useEffect(() => {
               <br/><br/>
               <h5 className="price">$ {item.product.p_price}</h5>
               
-              {/* <p>Size: {item.product.size}</p>
-              <p>Color: {item.product.color}</p> */}
+           
+              <p>Quantity: {item.quantity}</p> 
             </div>
 {/* 
             <div className="cart-col-2">

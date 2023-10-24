@@ -32,6 +32,8 @@ import ResetPass from "./pages/ResetPass";
 import EmailVerify from "./pages/emailVerify";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
 
+import Selectproduct from "./pages/Selectproduct";
+
 
 function App() {
   return (
@@ -42,7 +44,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="OrderHistoryPage" element={<OrderHistoryPage />} />
+            <Route path="Selectproduct" element={<Selectproduct />} />
+
             <Route path="EditProfile" element={<EditProfile />} />
+
             <Route path="ViewProfile" element={<ViewProfile />} />
             <Route path="Verify" element={<Verify />} />
             <Route path="ResetPass" element={<ResetPass />} />

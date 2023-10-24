@@ -43,7 +43,7 @@ const SingleProduct = () => {
             showConfirmButton: false,
             timer: 1500
           })
-          //  navigation('/');
+           navigation('/Selectproduct');
          }else{
            (Swal.fire({
             background:'#ced8e6',
@@ -362,8 +362,11 @@ const getRecommendedProducts = async (e) => {
                   </div>
                 </div>
                 <div className="d-flex align-items-center gap-15">
-                  <div style={{cursor:'pointer'}} onClick={handleAddToCompare}>
-                      <TbGitCompare className="fs-5 me-2" /> Add to Compare
+                  <div style={{cursor:'pointer'}} 
+                  onClick={handleAddToCompare} 
+                  >
+                    <TbGitCompare className="fs-5 me-2"  /> 
+                    Add to Compare  
                   </div>
                   <div  style={{cursor:'pointer'}} onClick={handleAddToWishList} >
                     <AiOutlineHeart className="fs-5 me-2"  /> Add to Wishlist
