@@ -1,13 +1,14 @@
 import React from "react";
 import BreadCrumb from "../components/BreadCrumb";
-import Color from "../components/Color";
+
 import Meta from "../components/Meta";
-import watch from "../images/watch.jpg";
+
 import Container from "../components/Container";
 import { useState, useEffect } from 'react';
-import {useNavigate } from "react-router-dom";
+import {useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { BiArrowBack } from "react-icons/bi";
 
 
 const CompareProduct = () => {
@@ -23,23 +24,7 @@ const CompareProduct = () => {
  
   
 
-  //   const fetchCompare= async()=>{
-  //     if(user_id.length!=0){
-  //       await axios.get('http://127.0.0.1:8000/products/compare/'+user_id
-  //       ).then((response)=>{
-  //          console.log(response.data.data);
-  //       if(!response.data.error){
-  //           setProduct(response.data.data);
-  //       }else{
-
-  //          alert(response.data.msg)
-         
-  //         }
-  //       })
-  //     }
-    
-  // }
-  const fetchCompare= async()=>{
+   const fetchCompare= async()=>{
     if(user_id.length!==0){
       await axios.get('http://127.0.0.1:8000/products/compare/'+user_id
       ).then((response)=>{
@@ -293,15 +278,10 @@ const CompareProduct = () => {
                     
                   </div>
                   <div className="d-flex align-items-center justify-content-center gap-30 ms-5">
-                  <button
-                      className="button"
-                      // data-bs-toggle="modal"
-                      // data-bs-target="#staticBackdrop"
-                      type="button" 
-                      // onClick={handleAddToCart}
-                    >
-                      Home
-                    </button>
+                  <Link to="/cart" className="text-dark">
+                      <BiArrowBack className="me-2" />
+                      Return to Home
+                    </Link>
                     <button
                       className="button"
                       // data-bs-toggle="modal"
@@ -362,15 +342,7 @@ const CompareProduct = () => {
                     
                   </div>
                   <div className="d-flex align-items-center justify-content-center gap-30 ms-5">
-                  <button
-                      className="button"
-                      // data-bs-toggle="modal"
-                      // data-bs-target="#staticBackdrop"
-                      type="button" 
-                      // onClick={handleAddToCart}
-                    >
-                      Home
-                    </button>
+                 
                     <button
                       className="button"
                       // data-bs-toggle="modal"
@@ -380,6 +352,10 @@ const CompareProduct = () => {
                     >
                       Add to Cart
                     </button>
+                    <Link to="/" className="text-dark">
+                      <BiArrowBack className="me-2" />
+                      Return to Home
+                    </Link>
                   </div>
                   
                 </div>

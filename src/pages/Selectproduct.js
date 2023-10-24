@@ -1,20 +1,17 @@
 import React, {useEffect, useState} from "react";
 import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
-import CategorySlider from "./CategorySlider";
-import ReactStars from "react-rating-stars-component";
-import CompareCard from "../components/CompareCard";
-import Color from "../components/Color";
+
 import Container from "../components/Container";
 
-
+import CompareCard from "../components/CompareCard";
 import axios from 'axios';
+
 const Selectproduct = () => {
 
 
 
-  
-  const [grid, setGrid] = useState(4);
+
   const [products,getProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -76,7 +73,7 @@ useEffect(() => {
       {/* Existing code... */}
       <div className="row">
         {filteredProducts.map((product) => (
-          <CompareCart
+          <CompareCard
             
             key={product.p_id}
             image={'http://127.0.0.1:8000/' + product.p_image}
