@@ -1,7 +1,7 @@
 import React ,{useState, useEffect} from "react";
 
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
-
+import { TbGitCompare } from "react-icons/tb";
 import axios from "axios";
 import Swal from 'sweetalert2'
 
@@ -33,7 +33,7 @@ const CompareCard = (props) => {
             showConfirmButton: false,
             timer: 1500
           })
-           navigation('/Selectproduct');
+           navigation('/Compare-Product');
          }else{
            (Swal.fire({
             background:'#ced8e6',
@@ -61,8 +61,11 @@ const CompareCard = (props) => {
     if(user_id.length!==0){
       await axios.get('http://127.0.0.1:8000/products/compare/'+user_id
       ).then((response)=>{
+        console.log('Product', response.data.data.product);
+        console.log('Details', response.data.data.details);
+        console.log('Category', response.data.data.category);
+
         console.log('loop');
-        // console.log(response.data.data);
         if(!response.data.error){
           setProduct(response.data.data.product);
           setDetails(response.data.data.details);
@@ -79,7 +82,7 @@ const CompareCard = (props) => {
       })
     }
   }
-  
+ 
   let location = useLocation();
   console.log(product);
   console.log('Category');
@@ -96,13 +99,7 @@ const CompareCard = (props) => {
         } `}
       >
         <Link
-          to={`${
-            location.pathname == "/"
-              ? `/product/${props.p_id}`
-              : location.pathname == "/product/:id"
-              ? `/product/${props.p_id}`
-              : `${props.p_id}`
-          }`}
+         
           className="product-card position-relative"
         >
          
@@ -126,16 +123,13 @@ const CompareCard = (props) => {
           </div>
 
 
-          <div>
-          <button
-                      className="button border-0 ml-5 mb-4"
-                   
-                      type="button" 
-                      onClick={handleAddToCompare}
-                    >
-                      Add to Compare
-                    </button>
-          </div>
+         
+          <div style={{cursor:'pointer'}} 
+                  onClick={handleAddToCompare} 
+                  >
+                    <TbGitCompare className="fs-5 me-2"  /> 
+                    Add to Compare  
+                  </div>
 
         </Link>
         </div>

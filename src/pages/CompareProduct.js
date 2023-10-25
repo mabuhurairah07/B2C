@@ -169,6 +169,25 @@ const CompareProduct = () => {
                       <h5>Energy Efficiency:</h5>
                       <p>{detail.ac_energy_efficiency}</p>
                     </div>
+
+                    <div className="">
+                 
+                 
+                 <button
+                   className=""
+                   // data-bs-toggle="modal"
+                   // data-bs-target="#staticBackdrop"
+                   type="" 
+                   onClick={()=>handleAddToCart(item.product.p_id)}
+                 >
+                   Add to Cart
+                 </button>
+                 <Link to="/" className="text-dark" >
+                   <BiArrowBack className="me-2" />
+                   Return to Home
+                 </Link>
+                 
+               </div>
                     
                   </div>
                 </div>
@@ -222,6 +241,25 @@ const CompareProduct = () => {
                       <h5>Generation:</h5>
                       <p>{detail.laptop_generation}</p>
                     </div>
+
+                    <div className="">
+                 
+                 
+                 <button
+                   className=""
+                   // data-bs-toggle="modal"
+                   // data-bs-target="#staticBackdrop"
+                   type="" 
+                   onClick={()=>handleAddToCart(item.product.p_id)}
+                 >
+                   Add to Cart
+                 </button>
+                 <Link to="/" className="text-dark" >
+                   <BiArrowBack className="me-2" />
+                   Return to Home
+                 </Link>
+                 
+               </div>
                     
                   </div>
                 </div>
@@ -277,20 +315,23 @@ const CompareProduct = () => {
                     </div>
                     
                   </div>
-                  <div className="d-flex align-items-center justify-content-center gap-30 ms-5">
-                  <Link to="/cart" className="text-dark">
-                      <BiArrowBack className="me-2" />
-                      Return to Home
-                    </Link>
+                  <div className="">
+                 
+                 
                     <button
-                      className="button"
+                      className=""
                       // data-bs-toggle="modal"
                       // data-bs-target="#staticBackdrop"
-                      type="button" 
+                      type="" 
                       onClick={()=>handleAddToCart(item.product.p_id)}
                     >
                       Add to Cart
                     </button>
+                    <Link to="/" className="text-dark" >
+                      <BiArrowBack className="me-2" />
+                      Return to Home
+                    </Link>
+                    
                   </div>
                 </div>
               </div>
@@ -341,21 +382,23 @@ const CompareProduct = () => {
                     </div>
                     
                   </div>
-                  <div className="d-flex align-items-center justify-content-center gap-30 ms-5">
+                  <div className="">
+                 
                  
                     <button
-                      className="button"
+                      className=""
                       // data-bs-toggle="modal"
                       // data-bs-target="#staticBackdrop"
-                      type="button" 
+                      type="" 
                       onClick={()=>handleAddToCart(item.product.p_id)}
                     >
                       Add to Cart
                     </button>
-                    <Link to="/" className="text-dark">
+                    <Link to="/" className="text-dark" >
                       <BiArrowBack className="me-2" />
                       Return to Home
                     </Link>
+                    
                   </div>
                   
                 </div>

@@ -132,7 +132,9 @@ useEffect(() => {
               <p>{item.product.p_name}</p>
 
               <br/><br/>
-              <h5 className="price">$ {item.product.p_price}</h5>
+              <h6 className="Total price">Total Price: ${parseFloat(item.product.p_price)*parseFloat(item.quantity)}</h6>
+              <p className="price">Price: $ {item.product.p_price}</p>
+            
               
            
               <p>Quantity: {item.quantity}</p> 
