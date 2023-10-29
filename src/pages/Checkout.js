@@ -4,6 +4,7 @@ import { BiArrowBack } from "react-icons/bi";
 import watch from "../images/watch.jpg";
 import Container from "../components/Container";
 import axios from "axios";
+import ScrollToTop from "./ScrollToTop";
 
 const Checkout = () => {
   const url=useParams('url');
@@ -125,7 +126,9 @@ useEffect(() => {
             }, [submit]);
  
   return (
+  
     <>
+      <ScrollToTop />
       <Container class1="checkout-wrapper py-5 home-wrapper-2">
         <div className="">
           

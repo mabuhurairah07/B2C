@@ -11,6 +11,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import watch from "../images/watch.jpg";
 import Container from "../components/Container";
 import axios from 'axios';
+import ScrollToTop from "./ScrollToTop";
 import Swal from 'sweetalert2'
 const SingleProduct = () => {
   const {id}=useParams();
@@ -244,6 +245,7 @@ const getRecommendedProducts = async (e) => {
   const closeModal = () => {};
   return (
     <>
+    <ScrollToTop />
       <Meta title={"Product Name"} />
       
       <BreadCrumb title="Product Name" />
