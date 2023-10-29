@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Rating from 'react-rating-stars-component';
 class OrderHistoryPage extends Component {
   constructor(props) {
     super(props);
@@ -27,21 +27,16 @@ class OrderHistoryPage extends Component {
       ],
     };
   }
-
-  renderStars(rating) {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      if (i < rating) {
-        stars.push(<span key={i}>&#9733;</span>); // Full star
-      } else {
-        stars.push(<span key={i}>&#9734;</span>); // Empty star
-      }
-    }
-    return stars;
+  handleRatingChange = (newRating, order) => {
+    // Handle the new rating value, you can update the state or perform other actions
+    console.log(`New rating for order ${order.id}: ${newRating}`);
   }
+
+  
 
   render() {
     const { orders } = this.state;
+    
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor:'#D5E3F0' }}>
@@ -59,8 +54,14 @@ class OrderHistoryPage extends Component {
               <span style={{ fontWeight: 'bold' }}>Price:</span> ${order.price.toFixed(2)}
             </div>
             <div>
-              <span style={{ fontWeight: 'bold' }}>Rating:</span> {this.renderStars(order.rating)}
-            </div>
+          <span style={{ fontWeight: 'bold' }}>Rating:</span>
+          <Rating
+            count={5}
+            value={order.rating}
+           
+            onChange={(newRating) => this.handleRatingChange(newRating, order)}
+          />
+        </div>
             
           </div>
           

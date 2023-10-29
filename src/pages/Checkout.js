@@ -25,6 +25,7 @@ const Checkout = () => {
   const [expiryyear,setExpiryyear] = useState(0);
   const [formDisabled, setFormDisabled] = useState(true);
   const [paymentOption, setPaymentOption] = useState("Cash");
+  const [data, setData] = useState('');
 
   const [quantity,setQuantity] = useState({});
 
@@ -32,7 +33,28 @@ const Checkout = () => {
   const [number, setNumber] = useState(0);
   const [PAddress, setPAddress] = useState(0);
   
+  const handleSubmit = async () => {
+    
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/user/user/'+user_id, {
+      });
 
+      if (!response.data.error) {
+        // alert(response.data.msg);
+        setData(response.data.data[0])
+        
+        // navigation('/');
+      } else {
+        alert(response.data.msg);
+      }
+    } catch (error) {
+      alert('An error occurred during update.');
+    }
+  }
+  console.log(data);
+  useEffect(()=>{
+    handleSubmit();
+  },[])
 
 const addOrder = async ()=>{
   // console.log(product)
@@ -165,16 +187,7 @@ useEffect(() => {
 
               </div>
             </div>
-                  {/* <div className="border-bottom py-4">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="total">Subtotal</p>
-                      <p className="total-price">$ 500</p>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <p className="mb-0 total">Shipping</p>
-                      <p className="mb-0 total-price">${500}</p>
-                    </div>
-                  </div> */}
+                \
                   <div className="d-flex justify-content-between align-items-center border-bootom py-4">
                     <h4 className="total">Total</h4>
                     <h5 className="total-price">$500</h5>
@@ -199,7 +212,8 @@ useEffect(() => {
                     placeholder="First Name"
                     className="form-control"
                     onChange={(e)=>setFirstName(e.target.value)}
-                    value={firstname}
+                    // value={firstname}
+                    value={data.username?data.username:'Loading'}
                     required
                   />
                 </div>
@@ -213,10 +227,29 @@ useEffect(() => {
     pattern="[0-9]{11}"
     className="form-control"
     onChange={(e) => setNumber(e.target.value)}
-    value={number}
+    //value={number}
+    value={data.phone_no?data.phone_no:'Loading'}
     required
   />
                 </div>
+
+
+                <div className="flex-grow-1">
+                <label htmlFor="" style={{ display: 'block' }}>
+  Email<span style={{ color: 'red' }}>*</span>
+</label>
+                  <input
+    type="email"
+    placeholder="easybay@gmail.com"
+    
+    className="form-control"
+    onChange={(e) => setNumber(e.target.value)}
+    value={data.email?data.email:'Loading'} 
+    
+    required
+  />
+                </div>
+
                 <div className="flex-grow-1">
   <label htmlFor="" style={{ display: 'block' }}>
     Shipping Address <span style={{ color: 'red' }}>*</span>
@@ -295,7 +328,7 @@ useEffect(() => {
                 
                 <div className="flex-grow-1">
                 <label htmlFor="" style={{ display: 'block' }}>
-    City <span style={{ color: 'red' }}>*</span>
+    Zip code <span style={{ color: 'red' }}>*</span>
   </label>
                   <input
                     type="number"

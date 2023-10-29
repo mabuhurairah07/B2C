@@ -52,11 +52,11 @@ const Header = (props) => {
               <header className="header-top-strip py-2">
         <div className="container-xxl">
           <div className="row">
-            <div className="col-6">
+            {/* <div className="col-6">
               <p className="text-white mb-0" >
                 <b>Enjoy Free Shipping from EasyBay Over $100</b> 
               </p>
-            </div>
+            </div> */}
          
             {props.logged_in?
         <div className="text-end  "  >
@@ -79,11 +79,21 @@ const Header = (props) => {
       <header className="header-upper py-3" >
         <div className="container-xxl" >
           <div className="row align-items-center">
-            <div className="col-2">
-              <h1>
-                <Link to = "/" className="text-black">  Easy Bay </Link>
-              </h1>
-            </div>
+
+          <div className="col-2">
+  <h1 className="d-flex align-items-center">
+    <Link to="/" className="text-black" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      <img
+        src="/images/home/icon.png"
+        alt="icon"
+        style={{ width: '50px', marginRight: '10px' , height:"50px"}}
+      />
+      EasyBay
+    </Link>
+  </h1>
+</div>
+
+
             <div className="col-5">
              
             </div>
@@ -96,7 +106,7 @@ const Header = (props) => {
                   >
                     <img src={compare} alt="compare" />
                     <p className="mb-0">
-                      Compare <br /> Products
+                      Compare 
                     </p>
                   </Link>
                 </div>
@@ -107,7 +117,7 @@ const Header = (props) => {
                   >
                     <img src={wishlist} alt="wishlist" />
                     <p className="mb-0">
-                      Favourite <br /> wishlist
+                    wishlist
                     </p>
                   </Link>
                 </div>

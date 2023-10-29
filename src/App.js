@@ -6,15 +6,12 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OurStore from "./pages/OurStore";
-
 import CompareProduct from "./pages/CompareProduct";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
-
 import Forgotpassword from "./pages/Forgotpassword";
 import Signup from "./pages/Signup";
 import Resetpassword from "./pages/Resetpassword";
-
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPloicy from "./pages/RefundPloicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
@@ -27,11 +24,9 @@ import Product from "./pages/Product";
 import ViewProfile from "./pages/ViewProfile";
 import EditProfile from "./pages/EditProfile";
 import Verify from "./pages/Verify";
-
 import ResetPass from "./pages/ResetPass";
 import EmailVerify from "./pages/emailVerify";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
-
 import Selectproduct from "./pages/Selectproduct";
 
 
