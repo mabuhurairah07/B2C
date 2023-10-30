@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 
 const ProductCard = (props) => {
   const { grid } = props;
+  const [product,setProduct]=useState({});
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
   const navigation = useNavigate();
@@ -74,11 +75,7 @@ const ProductCard = (props) => {
           }`}
           className="product-card position-relative"
         >
-          <div className="wishlist-icon position-absolute">
-            {/* <button className="border-0 bg-transparent">
-              <img src={wish} alt="wishlist" />
-            </button> */}
-          </div>
+          
           <div className="product-image position-sticky">
               {/* <img src="images/iphone" className="img-fluid" ></img> */}
                 <div>
@@ -94,6 +91,7 @@ const ProductCard = (props) => {
                 
               </h5>
               <p className={`description ${grid === 12 ? "d-block" : "d-none"}`}>
+              {props.des}
                
               </p>
               <p className="price">{props.price}</p>

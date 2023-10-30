@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import axios from 'axios';
 
 const userObj = JSON.parse(localStorage.getItem('user'));
 const user_id = userObj ? userObj.id : null;
 
+=======
+import Rating from 'react-rating-stars-component';
+>>>>>>> 6d7feba41f2dbb02b377c6b6817680d73fe80b7b
 class OrderHistoryPage extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +17,7 @@ class OrderHistoryPage extends Component {
       currentRating: 0, // Initialize with a default rating value
     };
   }
+<<<<<<< HEAD
 
   async componentDidMount() {
     await this.getAllProducts();
@@ -72,10 +77,18 @@ class OrderHistoryPage extends Component {
     }
 
     return <div className="rating">{stars}</div>;
+=======
+  handleRatingChange = (newRating, order) => {
+    // Handle the new rating value, you can update the state or perform other actions
+    console.log(`New rating for order ${order.id}: ${newRating}`);
+>>>>>>> 6d7feba41f2dbb02b377c6b6817680d73fe80b7b
   }
+
+  
 
   render() {
     const { orders } = this.state;
+    
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#D5E3F0' }}>
@@ -95,7 +108,27 @@ class OrderHistoryPage extends Component {
                 <span style={{ fontWeight: 'bold' }}>Rating:</span> {this.renderStars(order)}
               </div>
             </div>
+<<<<<<< HEAD
           ))}
+=======
+            <div>
+              <span style={{ fontWeight: 'bold' }}>Price:</span> ${order.price.toFixed(2)}
+            </div>
+            <div>
+          <span style={{ fontWeight: 'bold' }}>Rating:</span>
+          <Rating
+            count={5}
+            value={order.rating}
+           
+            onChange={(newRating) => this.handleRatingChange(newRating, order)}
+          />
+        </div>
+            
+          </div>
+          
+          
+        ))}
+>>>>>>> 6d7feba41f2dbb02b377c6b6817680d73fe80b7b
         </div>
       </div>
     );

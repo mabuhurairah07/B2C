@@ -56,7 +56,7 @@ const Header = (props) => {
                   <Link to="/compare-product" className="d-flex align-items-center gap-10 text-white">
                     <img src={compare} alt="compare" />
                     <p className="mb-0">
-                      Compare <br /> Products
+                      Compare 
                     </p>
                   </Link>
                 </div>
@@ -64,7 +64,7 @@ const Header = (props) => {
                   <Link to="/wishlist" className="d-flex align-items-center gap-10 text-white">
                     <img src={wishlist} alt="wishlist" />
                     <p className="mb-0">
-                      Favourite <br /> wishlist
+                    wishlist
                     </p>
                   </Link>
                 </div>

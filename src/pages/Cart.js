@@ -7,6 +7,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../components/Container";
 import axios from 'axios';
+import ScrollToTop from "./ScrollToTop";
 
 const Cart = () => {
   const userObj = JSON.parse(localStorage.getItem('user'));
@@ -87,6 +88,7 @@ const Cart = () => {
         }, [submit]);
   return (
     <>
+      <ScrollToTop />
       <Meta title={"Cart"} />
       <BreadCrumb title="Cart" />
       <Container class1="cart-wrapper home-wrapper-2 py-5">

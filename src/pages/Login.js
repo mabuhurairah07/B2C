@@ -62,7 +62,9 @@ const Login = () => {
                  
 
                   <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                    <button className="button border-0" onClick={handleSubmit} style={{marginTop: '1px'}}>
+                    <button className="button border-0" onClick={handleSubmit} style={{marginTop: '1px'}}
+                   
+                    >
                       Login
                     </button>
                     
