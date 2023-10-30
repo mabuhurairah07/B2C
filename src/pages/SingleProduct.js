@@ -18,6 +18,9 @@ const SingleProduct = () => {
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
   const [stars, setStars] = useState();
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [compareList, setCompareList] = useState([]);
+
   
   
 
@@ -27,45 +30,47 @@ const SingleProduct = () => {
 
 
   const navigation=useNavigate();
-  const handleAddToCompare= async ()=>{
-    if(user_id!=null){
-      await axios.post('http://127.0.0.1:8000/products/compare/',{
-       product_id : id,
-       user_id : user_id
-      }).then((response)=>{
-         console.log(response.data);
-         if(!response.data.error){
-          //  localStorage.setItem('Item Added',true)
-          Swal.fire({
-            
-            icon: 'success',
-            title: 'Product has been Added to Compare',
-            showConfirmButton: false,
-            timer: 1500
-          })
-           navigation('/Selectproduct');
-         }else{
-           (Swal.fire({
-            background:'#ced8e6',
-            text: response.data.msg,
-            icon: 'warning',
-            confirmButtonText: 'Okay'
-          }))
-         }
-      })
-    }else{
-      (Swal.fire({
-        background:'#ced8e6',
-        text:' Please Login First',
-       
+  const handleAddToCompare = (product) => {
+    if (user_id !== null) {
+      // Get the product_id from the selected product
+      const product_id = product.p_id;
+      
+      if (product_id) {
+        // Log the product_id to the console
+        // console.log('Product ID:', product_id);
+  
+        // Save the product_id to local storage for later use
+        localStorage.setItem('product_id', product_id);
+  
+        Swal.fire({
+          icon: 'success',
+          title: 'Product has been Added to Compare',
+          showConfirmButton: false,
+          timer: 1500
+        });
+  
+        // Use React Router to navigate to the `/Selectproduct/:cat` route
+        navigation(`/Selectproduct/${product.category.cat_name}`);
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Product ID is missing. Cannot add to Compare.',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
+    } else {
+      Swal.fire({
+        background: '#ced8e6',
+        text: 'Please Login First',
         confirmButtonText: 'Okay'
-      }))
+      });
       navigation('/login');
     }
-
-    
-
-  }
+  };
+  
+  
+  
   const Alert = ( ) => {
     Swal.fire('My Alert')
    }
@@ -301,11 +306,11 @@ const getRecommendedProducts = async (e) => {
                   <ReactStars
                     count={5}
                     size={24}
-                    value={4}
+                    value={product.rating}
                     edit={false}
                     activeColor="#ffd700"
                   />
-                  <p className="mb-0 t-review">( 2 Reviews )</p>
+                  
                 </div>
                 <a className="review-btn" href="#review">
                   Write a Review
@@ -363,7 +368,7 @@ const getRecommendedProducts = async (e) => {
                 </div>
                 <div className="d-flex align-items-center gap-15">
                   <div style={{cursor:'pointer'}} 
-                  onClick={handleAddToCompare} 
+                   onClick={() => handleAddToCompare(product)}
                   >
                     <TbGitCompare className="fs-5 me-2"  /> 
                     Add to Compare  

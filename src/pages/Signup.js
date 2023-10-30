@@ -193,6 +193,12 @@ const Signup = () => {
                   </div>
                 </div>
               </form>
+              <p>
+    Already have an account? 
+    <Link to="/login" style={{ textDecoration: 'none', color: '#007bff' }}>
+      Login
+    </Link>
+  </p>
             </div>
           </div>
         </div>

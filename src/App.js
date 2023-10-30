@@ -44,7 +44,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="OrderHistoryPage" element={<OrderHistoryPage />} />
-            <Route path="Selectproduct" element={<Selectproduct />} />
+            <Route path="Selectproduct/:cat?" element={<Selectproduct />} />
 
             <Route path="EditProfile" element={<EditProfile />} />
 
@@ -53,7 +53,7 @@ function App() {
             <Route path="ResetPass" element={<ResetPass />} />
             <Route path="EmailVerify" element={<EmailVerify />} />
             <Route path="contact" element={<Contact />} />
-            <Route path="product" element={<OurStore />} />
+            <Route path="ourstore/:cat?" element={<OurStore />} />
             <Route path="addproduct" element={<Product />} />
             <Route path="product/:id" element={<SingleProduct />} />
             <Route path="Category-Slider" element={<CategorySlider />} />

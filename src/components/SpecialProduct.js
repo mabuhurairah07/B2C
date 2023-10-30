@@ -111,7 +111,7 @@ const SpecialProduct = (props) => {
               <ReactStars
                 count={5}
                 size={24}
-                value={4}
+                value={props.rating}
                 edit={false}
                 activeColor="#ffd700"
               />

@@ -50,7 +50,7 @@ const addOrder = async ()=>{
       zip : zip,
       address : address,
       firstname : firstname,
-      lastname : lastname,
+      p_address : PAddress,
       o_panel : 1
     }
     ).then((response)=>{
@@ -75,7 +75,7 @@ const getAllProducts = async (e) => {
      
       if(!response.data.error){
           getProducts(response.data.data);
-          console.log(response.data.data);
+          console.log(response.data);
       }else{
         alert(response.msg);
       }
@@ -204,20 +204,6 @@ useEffect(() => {
                   />
                 </div>
                 <div className="flex-grow-1">
-                <label htmlFor="" style={{ display: 'block' }}>
-  Phone Number <span style={{ color: 'red' }}>*</span>
-</label>
-                  <input
-    type="tel"
-    placeholder="11-digit Phone Number"
-    pattern="[0-9]{11}"
-    className="form-control"
-    onChange={(e) => setNumber(e.target.value)}
-    value={number}
-    required
-  />
-                </div>
-                <div className="flex-grow-1">
   <label htmlFor="" style={{ display: 'block' }}>
     Shipping Address <span style={{ color: 'red' }}>*</span>
   </label>
@@ -295,7 +281,7 @@ useEffect(() => {
                 
                 <div className="flex-grow-1">
                 <label htmlFor="" style={{ display: 'block' }}>
-    City <span style={{ color: 'red' }}>*</span>
+    zip <span style={{ color: 'red' }}>*</span>
   </label>
                   <input
                     type="number"

@@ -17,79 +17,63 @@ const CompareCard = (props) => {
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
 
-  const handleAddToCompare= async ()=>{
-    if(user_id!=null){
-      await axios.post('http://127.0.0.1:8000/products/compare/',{
-       product_id : id,
-       user_id : user_id
-      }).then((response)=>{
-         console.log(response.data);
-         if(!response.data.error){
-          //  localStorage.setItem('Item Added',true)
+  const handleAddToCompare = (p_id) => {
+    if (user_id !== null) {
+      // Get the product_id from the selected product
+      const product_id = p_id;
+  
+      if (product_id) {
+        // Check if the product_id in local storage matches the current product's id
+        const storedProductID = JSON.parse(localStorage.getItem('product_id'));
+        console.log(storedProductID);
+  
+        if (storedProductID === product_id) {
           Swal.fire({
-            
+            icon: 'info',
+            title: 'Product is already in Compare.',
+            showConfirmButton: false,
+            timer: 2000
+          });
+        } else {
+          // Save the product_id to local storage for later use
+          localStorage.setItem('product_id1', product_id);
+  
+          Swal.fire({
             icon: 'success',
             title: 'Product has been Added to Compare',
             showConfirmButton: false,
             timer: 1500
-          })
-           navigation('/Compare-Product');
-         }else{
-           (Swal.fire({
-            background:'#ced8e6',
-            text: response.data.msg,
-            icon: 'warning',
-            confirmButtonText: 'Okay'
-          }))
-         }
-      })
-    }else{
-      (Swal.fire({
-        background:'#ced8e6',
-        text:' Please Login First',
-       
+          });
+  
+          // Use React Router to navigate to the `/Selectproduct/:cat` route
+          // navigation(`/Selectproduct/${product.category.cat_name}`);
+        }
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Product ID is missing. Cannot add to Compare.',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
+    } else {
+      Swal.fire({
+        background: '#ced8e6',
+        text: 'Please Login First',
         confirmButtonText: 'Okay'
-      }))
+      });
       navigation('/login');
     }
-
-    
-
-  }
-
-  const fetchCompare= async()=>{
-    if(user_id.length!==0){
-      await axios.get('http://127.0.0.1:8000/products/compare/'+user_id
-      ).then((response)=>{
-        console.log('Product', response.data.data.product);
-        console.log('Details', response.data.data.details);
-        console.log('Category', response.data.data.category);
-
-        console.log('loop');
-        if(!response.data.error){
-          setProduct(response.data.data.product);
-          setDetails(response.data.data.details);
-          setCategory(response.data.data.category);
-        }else{
-          const errorData = {
-            icon: 'error',
-            title: 'Oops...',
-            text: response.data.msg,
-            confirmButtonText: 'OK'
-          }
-          Swal.fire(errorData)
-        }
-      })
-    }
-  }
+  };
+  
  
   let location = useLocation();
-  console.log(product);
-  console.log('Category');
-  console.log(category);
+  // console.log(product);
+  // console.log('Category');
+  // console.log(category);
   
   useEffect(()=>{
-    fetchCompare();
+    // fetchCompare();
   },[submit])
   return (
     <>
@@ -125,7 +109,7 @@ const CompareCard = (props) => {
 
          
           <div style={{cursor:'pointer'}} 
-                  onClick={handleAddToCompare} 
+                  onClick={() => handleAddToCompare(props.p_id)} 
                   >
                     <TbGitCompare className="fs-5 me-2"  /> 
                     Add to Compare  

@@ -237,6 +237,7 @@ const getAllProducts = async (e) => {
          price = {product.p_price}
          p_id={product.p_id}
          title={product.p_title}
+         rating={product.rating}
          />
 
 

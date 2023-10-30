@@ -1,7 +1,7 @@
 import React ,{useState} from "react";
 
 import ReactStars from "react-rating-stars-component";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import Swal from 'sweetalert2'
@@ -10,6 +10,7 @@ const ProductCard = (props) => {
   const { grid } = props;
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
+  const navigation = useNavigate();
   const handleAddToCart= async ()=>{
     if(user_id!=null){
       await axios.post('http://127.0.0.1:8000/cart_details/addtocart/',{
@@ -30,7 +31,7 @@ const ProductCard = (props) => {
             showConfirmButton: false,
             timer: 1500
           })
-          //  navigation('/');
+           navigation('/ourstore');
          }else{
            (Swal.fire({
             background:'#ced8e6',
