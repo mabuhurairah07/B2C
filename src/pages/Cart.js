@@ -88,6 +88,7 @@ const Cart = () => {
         }, [submit]);
   return (
     <>
+    <ScrollToTop />
       <ScrollToTop />
       <Meta title={"Cart"} />
       <BreadCrumb title="Cart" />

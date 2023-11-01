@@ -17,9 +17,7 @@ const Header = (props) => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
-              <p className="text-white mb-0">
-                <b>Enjoy Free Shipping from EasyBay Over $100</b>
-              </p>
+              
             </div>
             {props.logged_in ? (
               <div className="text-end">
@@ -42,13 +40,18 @@ const Header = (props) => {
       <header className="header-upper py-3">
         <div className="container-xxl">
           <div className="row align-items-center">
-            <div className="col-2">
-              <h1>
-                <Link to="/" className="text-black">
-                  Easy Bay
-                </Link>
-              </h1>
-            </div>
+          <div className="col-2">
+  <h1 className="d-flex align-items-center">
+    <Link to="/" className="text-black" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+      <img
+        src="/images/home/icon.png"
+        alt="icon"
+        style={{ width: '30px', marginRight: '10px' }}
+      />
+      EasyBay
+    </Link>
+  </h1>
+</div>
             <div className="col-5"></div>
             <div className="col-5">
               <div className="header-upper-links d-flex align-items-center justify-content-between">

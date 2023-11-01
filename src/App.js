@@ -38,7 +38,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="OrderHistoryPage" element={<OrderHistoryPage />} />
+            <Route path="OrderHistoryPage/" element={<OrderHistoryPage />} />
             <Route path="Selectproduct/:cat?" element={<Selectproduct />} />
 
             <Route path="EditProfile" element={<EditProfile />} />

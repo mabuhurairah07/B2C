@@ -19,8 +19,7 @@ const SingleProduct = () => {
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
   const [stars, setStars] = useState();
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [compareList, setCompareList] = useState([]);
+  
 
   
   
@@ -425,7 +424,6 @@ const getRecommendedProducts = async (e) => {
                       edit={false}
                       activeColor="#ffd700"
                     />
-                    <p className="mb-0">Based on 2 Reviews</p>
                   </div>
                 </div>
                 {/* {orderedProduct && (

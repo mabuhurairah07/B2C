@@ -89,7 +89,9 @@ const CompareProduct = () => {
       });
     }
   };
-
+  console.log(product);
+  console.log(details);
+  console.log(category);
   useEffect(() => {
     fetchCompare();
   }, [submit]);
@@ -100,7 +102,7 @@ const CompareProduct = () => {
       <BreadCrumb title="Compare Products" />
       <Container class1="compare-product-wrapper py-5 home-wrapper-2">
         <div className="row">
-          {product.length !== 0 && details.length !== 0 ? (
+          {product.length != 0 && details.length != 0 ? (
             <div className="col-12">
               <table className="compare-table">
                 <tbody>
@@ -115,28 +117,28 @@ const CompareProduct = () => {
                           <td>
                             <table className="detail-table">
                               <tbody>
-                                {category === 'AC' && (
+                                {category == 'AC' && (
                                   <tr>
                                     <td>Capacity:</td>
                                     <td>{detail.ac_capacity}</td>
                                   </tr>
                                   // Add more AC details here...
                                 )}
-                                {category === 'Laptops' && (
+                                {category == 'Laptops' && (
                                   <tr>
                                     <td>Processor:</td>
                                     <td>{detail.laptop_processor}</td>
                                   </tr>
                                   // Add more Laptop details here...
                                 )}
-                                {category === 'Phones' && (
+                                {category == 'Phones' && (
                                   <tr>
                                     <td>Processor:</td>
                                     <td>{detail.mobile_processor}</td>
                                   </tr>
                                   // Add more Phone details here...
                                 )}
-                                {category === 'LCD' && (
+                                {category == 'LCD' && (
                                   <tr>
                                     <td>Display:</td>
                                     <td>{detail.lcd_display}</td>
