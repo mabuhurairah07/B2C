@@ -161,7 +161,7 @@ const Header = (props) => {
                         </NavLink>
                       </li>
                       <li>
-                        <NavLink className="dropdown-item text-white" to="/product/LCD">
+                        <NavLink className="dropdown-item text-white" to="/ourstore/LCD">
                           LCD
                         </NavLink>
                       </li>

@@ -8,6 +8,7 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 import { BiArrowBack } from "react-icons/bi";
 
+
 const CompareProduct = () => {
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
@@ -42,6 +43,7 @@ const CompareProduct = () => {
     }
   };
 
+  
   const handleAddToCart = async (product_id) => {
     if (user_id) {
       await axios.post('http://127.0.0.1:8000/cart_details/addtocart/', {
@@ -77,99 +79,147 @@ const CompareProduct = () => {
     }
   };
 
-  const deleteCompare = async (product_id) => {
-    if (user_id) {
-      await axios.post('http://127.0.0.1:8000/products/delete_compare/', {
-        user_id: user_id,
-        product_id: product_id
-      }).then((response) => {
-        setSubmit(submit + 1);
-      }).catch((err) => {
-        console.log(err);
-      });
-    }
-  };
   console.log(product);
   console.log(details);
   console.log(category);
   useEffect(() => {
     fetchCompare();
   }, [submit]);
-
+  
   return (
     <>
       <Meta title={"Compare Products"} />
       <BreadCrumb title="Compare Products" />
       <Container class1="compare-product-wrapper py-5 home-wrapper-2">
         <div className="row">
-          {product.length != 0 && details.length != 0 ? (
-            <div className="col-12">
-              <table className="compare-table">
-                <tbody>
-                  {product.map((item, index) => {
-                    if (item.product) {
-                      const detail = details[index];
-                      return (
-                        <tr key={item.product.p_id}>
-                          <td>
-                            <h5>{item.product.p_name}</h5>
-                          </td>
-                          <td>
-                            <table className="detail-table">
-                              <tbody>
-                                {category == 'AC' && (
-                                  <tr>
-                                    <td>Capacity:</td>
-                                    <td>{detail.ac_capacity}</td>
-                                  </tr>
-                                  // Add more AC details here...
-                                )}
-                                {category == 'Laptops' && (
-                                  <tr>
-                                    <td>Processor:</td>
-                                    <td>{detail.laptop_processor}</td>
-                                  </tr>
-                                  // Add more Laptop details here...
-                                )}
-                                {category == 'Phones' && (
-                                  <tr>
-                                    <td>Processor:</td>
-                                    <td>{detail.mobile_processor}</td>
-                                  </tr>
-                                  // Add more Phone details here...
-                                )}
-                                {category == 'LCD' && (
-                                  <tr>
-                                    <td>Display:</td>
-                                    <td>{detail.lcd_display}</td>
-                                  </tr>
-                                  // Add more LCD details here...
-                                )}
-                              </tbody>
-                            </table>
-                          </td>
-                          <td>
-                            <button
-                              className=""
-                              type=""
-                              onClick={() => handleAddToCart(item.product.p_id)}
-                            >
-                              Add to Cart
-                            </button>
-                            <Link to="/" className="text-dark">
-                              <BiArrowBack className="me-2" />
-                              Return to Home
-                            </Link>
-                          </td>
-                        </tr>
-                      );
-                    }
-                    return null;
-                  })}
-                </tbody>
-              </table>
-            </div>
-          ) : 'Loading'}
+        <div className="col-4">
+        </div>
+              {product.length !== 0 && details.length !== 0 ? (
+        <div className="col-8">
+          <div className="row">
+            {product.map((item, index) => {
+              const detail = details[index];
+              return (
+                <div key={item.p_id} className="col-md-6">
+                  <div className="card mb-3">
+                    <div className="row g-0">
+                      <div className="col-md-4">
+                        <img src={'http://127.0.0.1:8000/' + item.p_image} alt={item.p_name} style={{ maxWidth: "150px" }} />
+                      </div>
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h5 className="card-title">{item.p_name}</h5>
+                          <div className="card-details"  style={{marginTop:'100px'}}>
+                          <tbody>
+        {category === 'AC' && (
+          <>
+            <tr>
+              <td>Capacity:</td>
+              <td>{detail.ac_capacity}</td>
+            </tr>
+            <tr>
+              <td>Type:</td>
+              <td>{detail.ac_type}</td>
+            </tr>
+            <tr>
+              <td>Inverter:</td>
+              <td>{detail.ac_inverter}</td>
+            </tr>
+            <tr>
+              <td>Warranty:</td>
+              <td>{detail.ac_warranty}</td>
+            </tr>
+            <tr>
+              <td>Energy Efficiency:</td>
+              <td>{detail.ac_energy_efficiency}</td>
+            </tr>
+          </>
+        )}
+
+          {category === 'Laptops' && (
+            <>
+              <tr>
+                <td>Processor:</td>
+                <td>{detail.laptop_processor}</td>
+              </tr>
+              <tr>
+                <td>Battery:</td>
+                <td>{detail.laptop_battery}</td>
+              </tr>
+              <tr>
+                <td>Memory:</td>
+                <td>{detail.laptop_memory}</td>
+              </tr>
+              <tr>
+                <td>Display:</td>
+                <td>{detail.laptop_display}</td>
+              </tr>
+              <tr>
+                <td>Generation:</td>
+                <td>{detail.laptop_generation}</td>
+              </tr>
+            </>
+          )}
+
+          {category == 'Phones' && (
+            <>
+              <tr>
+                <td>Processor:</td>
+                <td>{detail.mobile_processor}</td>
+              </tr>
+              <tr>
+                <td>Battery:</td>
+                <td>{detail.mobile_battery}</td>
+              </tr>
+              <tr>
+                <td>Memory:</td>
+                <td>{detail.mobile_memory}</td>
+              </tr>
+              <tr>
+                <td>Display:</td>
+                <td>{detail.mobile_display}</td>
+              </tr>
+              <tr>
+                <td>Camera:</td>
+                <td>{detail.mobile_camera}</td>
+              </tr>
+            </>
+          )}
+
+          {category == 'LCD' && (
+            <>
+              <tr>
+                <td>Display:</td>
+                <td>{detail.lcd_display}</td>
+              </tr>
+              <tr>
+                <td>Power Consumption:</td>
+                <td>{detail.lcd_power_consumption}</td>
+              </tr>
+              <tr>
+                <td>Audio:</td>
+                <td>{detail.lcd_audio}</td>
+              </tr>
+              <tr>
+                <td>Chip:</td>
+                <td>{detail.lcd_chip}</td>
+              </tr>
+            </>
+          )}
+
+        </tbody>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : 'Loading'}
+
         </div>
       </Container>
     </>
