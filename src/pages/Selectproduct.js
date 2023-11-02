@@ -66,16 +66,13 @@ setFilteredProducts(filtered);
         } else {
           // Save the product_id to local storage for later use
           localStorage.setItem('product_id1', product_id);
-  
           Swal.fire({
             icon: 'success',
             title: 'Product has been Added to Compare',
             showConfirmButton: false,
             timer: 1500
           });
-  
-          // Use React Router to navigate to the `/Selectproduct/:cat` route
-          // navigation(`/Selectproduct/${product.category.cat_name}`);
+          navigation('/compare-product');
         }
       } else {
         Swal.fire({
