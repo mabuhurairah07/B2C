@@ -44,6 +44,7 @@ const CompareCard = (props) => {
             showConfirmButton: false,
             timer: 1500
           });
+          navigation('/compare-product');
   
           // Use React Router to navigate to the `/Selectproduct/:cat` route
           // navigation(`/Selectproduct/${product.category.cat_name}`);
@@ -82,7 +83,7 @@ const CompareCard = (props) => {
           location.pathname == "/product" ? `gr-${grid}` : "col-3"
         } `}
       >
-        <Link
+        <div
          
           className="product-card position-relative"
         >
@@ -115,7 +116,7 @@ const CompareCard = (props) => {
                     Add to Compare  
                   </div>
 
-        </Link>
+        </div>
         </div>
      
     </>

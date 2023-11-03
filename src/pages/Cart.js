@@ -103,6 +103,7 @@ const Cart = () => {
            <h4 className="cart-col-2">Price</h4>
            <h4 className="cart-col-3">Quantity</h4>
            <h4 className="cart-col-4">Total</h4>
+           <h4 className="cart-col-4">Actions</h4>
          </div>
 
         {  

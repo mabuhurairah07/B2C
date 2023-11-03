@@ -8,6 +8,7 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 import { BiArrowBack } from "react-icons/bi";
 
+
 const CompareProduct = () => {
   const userObj = JSON.parse(localStorage.getItem('user'));
   const user_id = userObj ? userObj.id : null;
@@ -42,6 +43,7 @@ const CompareProduct = () => {
     }
   };
 
+  
   const handleAddToCart = async (product_id) => {
     if (user_id) {
       await axios.post('http://127.0.0.1:8000/cart_details/addtocart/', {
@@ -77,103 +79,62 @@ const CompareProduct = () => {
     }
   };
 
-  const deleteCompare = async (product_id) => {
-    if (user_id) {
-      await axios.post('http://127.0.0.1:8000/products/delete_compare/', {
-        user_id: user_id,
-        product_id: product_id
-      }).then((response) => {
-        setSubmit(submit + 1);
-      }).catch((err) => {
-        console.log(err);
-      });
-    }
-  };
   console.log(product);
   console.log(details);
   console.log(category);
   useEffect(() => {
     fetchCompare();
   }, [submit]);
-
+  
   return (
     <>
       <Meta title={"Compare Products"} />
       <BreadCrumb title="Compare Products" />
       <Container class1="compare-product-wrapper py-5 home-wrapper-2">
         <div className="row">
-          {product.length != 0 && details.length != 0 ? (
+          {product.length !== 0 && details.length !== 0 ? (
             <div className="col-12">
-              <table className="compare-table">
-                <tbody>
-                  {product.map((item, index) => {
-                    if (item.product) {
-                      const detail = details[index];
-                      return (
-                        <tr key={item.product.p_id}>
-                          <td>
-                            <h5>{item.product.p_name}</h5>
-                          </td>
-                          <td>
-                            <table className="detail-table">
-                              <tbody>
-                                {category == 'AC' && (
-                                  <tr>
-                                    <td>Capacity:</td>
-                                    <td>{detail.ac_capacity}</td>
-                                  </tr>
-                                  // Add more AC details here...
-                                )}
-                                {category == 'Laptops' && (
-                                  <tr>
-                                    <td>Processor:</td>
-                                    <td>{detail.laptop_processor}</td>
-                                  </tr>
-                                  // Add more Laptop details here...
-                                )}
-                                {category == 'Phones' && (
-                                  <tr>
-                                    <td>Processor:</td>
-                                    <td>{detail.mobile_processor}</td>
-                                  </tr>
-                                  // Add more Phone details here...
-                                )}
-                                {category == 'LCD' && (
-                                  <tr>
-                                    <td>Display:</td>
-                                    <td>{detail.lcd_display}</td>
-                                  </tr>
-                                  // Add more LCD details here...
-                                )}
-                              </tbody>
-                            </table>
-                          </td>
-                          <td>
-                            <button
-                              className=""
-                              type=""
-                              onClick={() => handleAddToCart(item.product.p_id)}
-                            >
-                              Add to Cart
-                            </button>
-                            <Link to="/" className="text-dark">
-                              <BiArrowBack className="me-2" />
-                              Return to Home
-                            </Link>
-                          </td>
+              <div className="table-responsive">
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      {product.map((item) => (
+                        <th key={item.p_id}>
+                          <div className="text-center">
+                            <div>{item.p_name}</div>
+                            <img src={'http://127.0.0.1:8000/' + item.p_image} alt={item.p_name} style={{ maxWidth: "50px" }} />
+                            <div>{item.p_des}</div>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {category && details.length > 0 && details[0] && (
+                      Object.keys(details[0]).map((key) => (
+                        <tr key={key}>
+                          <td>{key}</td>
+                          {details.map((detail, index) => (
+                            <td key={index}>
+                              {detail[key]}
+                            </td>
+                          ))}
                         </tr>
-                      );
-                    }
-                    return null;
-                  })}
-                </tbody>
-              </table>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           ) : 'Loading'}
         </div>
       </Container>
     </>
   );
+  
+  
+  
 };
 
 export default CompareProduct;

@@ -408,7 +408,7 @@ const getRecommendedProducts = async (e) => {
           </div>
         </div>
       </Container>
-      <Container class1="reviews-wrapper home-wrapper-2">
+      {/* <Container class1="reviews-wrapper home-wrapper-2">
         <div className="row">
           <div className="col-12">
             <h3 id="review">Reviews</h3>
@@ -426,13 +426,7 @@ const getRecommendedProducts = async (e) => {
                     />
                   </div>
                 </div>
-                {/* {orderedProduct && (
-                  <div>
-                    <a className="text-dark text-decoration-underline" href="">
-                      Write a Review
-                    </a>
-                  </div>
-                )} */}
+              
               </div>
               <div className="review-form py-4">
                 <form className="d-flex flex-column gap-15">
@@ -456,7 +450,7 @@ const getRecommendedProducts = async (e) => {
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
       <Container class1="popular-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
@@ -480,58 +474,7 @@ const getRecommendedProducts = async (e) => {
         </div>
       </Container>
 
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered ">
-          <div className="modal-content">
-            <div className="modal-header py-0 border-0">
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body py-0">
-              <div className="d-flex align-items-center">
-                
-                <div className="d-flex flex-column flex-grow-1 w-50">
-                  <h6 className="mb-3">Apple Watch</h6>
-                  <p className="mb-1">Quantity: asgfd</p>
-                  <p className="mb-1">Color: asgfd</p>
-                  <p className="mb-1">Size: asgfd</p>
-                </div>
-              </div>
-            </div>
-            <div className="modal-footer border-0 py-0 justify-content-center gap-30">
-              <button type="button" className="button" data-bs-dismiss="modal">
-                View My Cart
-              </button>
-              <button type="button" className="button signup">
-                Checkout
-              </button>
-            </div>
-            <div className="d-flex justify-content-center py-3">
-              <Link
-                className="text-dark"
-                to="/product"
-                onClick={() => {
-                  closeModal();
-                }}
-              >
-                Continue To Shopping
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+     
     </>
   );
 };

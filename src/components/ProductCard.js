@@ -66,13 +66,7 @@ const ProductCard = (props) => {
         } `}
       >
         <Link
-          to={`${
-            location.pathname == "/"
-              ? `/product/${props.p_id}`
-              : location.pathname == "/product/:id"
-              ? `/product/${props.p_id}`
-              : `${props.p_id}`
-          }`}
+          to={'/product/'+props.p_id}
           className="product-card position-relative"
         >
           

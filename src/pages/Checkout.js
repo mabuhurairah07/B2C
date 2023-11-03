@@ -208,7 +208,7 @@ useEffect(() => {
                 
                 <div className="flex-grow-1">
                 <label htmlFor="" style={{ display: 'block' }}>
-  UserName <span style={{ color: 'red' }}>*</span>
+  FirstName <span style={{ color: 'red' }}>*</span>
 </label>
                   <input
                     type="text"
@@ -216,10 +216,25 @@ useEffect(() => {
                     className="form-control"
                     onChange={(e)=>setFirstName(e.target.value)}
                     // value={firstname}
-                    value={data.username?data.username:'Loading'}
+                    // value={data.username?data.username:'Loading'}
                     required
                   />
                 </div>
+                <div className="flex-grow-1">
+                <label htmlFor="" style={{ display: 'block' }}>
+  LastName <span style={{ color: 'red' }}>*</span>
+</label>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="form-control"
+                    onChange={(e)=>setFirstName(e.target.value)}
+                    // value={firstname}
+                    
+                    required
+                  />
+                </div>
+
                 <div className="flex-grow-1">
   <label htmlFor="" style={{ display: 'block' }}>
     Shipping Address <span style={{ color: 'red' }}>*</span>
@@ -234,7 +249,13 @@ useEffect(() => {
   />
 </div>
 
-<label>
+
+
+
+<div className="flex-grow-1">
+  <label htmlFor="" style={{ display: 'block' }}>
+    Permanent Address <span style={{ color: 'red' }}>*</span>
+    <label style={{fontSize:'10px', paddingLeft:'36px'}}>
   <input
     type="checkbox"
     onChange={(e) => {
@@ -246,11 +267,6 @@ useEffect(() => {
   Same as Shipping Address
 </label>
 
-
-
-<div className="flex-grow-1">
-  <label htmlFor="" style={{ display: 'block' }}>
-    Permanent Address <span style={{ color: 'red' }}>*</span>
   </label>
   <input
     type="text"

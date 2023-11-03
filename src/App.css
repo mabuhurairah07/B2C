@@ -831,6 +831,58 @@ button:hover {
 .icon2 {
   font-size: 20px; /* Adjust the size as needed */
 }
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white; /* Set the text color to a beautiful blue (#007bff) */
+}
+
+.logo-icon {
+  width: 60px; /* Increase the size of the icon */
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 55px; /* Adjust the font size */
+  font-weight: bold; /* Make the text bold */
+  font-family: 'sans-serif'; /* Choose a nice font style */
+}
+
+.user-greeting {
+  display: flex;
+  align-items: center;
+  
+}
+
+.icon2 {
+  font-size: 30px; /* Increase the size of the icon */
+  margin-right: 10px;
+  color: white; /* Set the color of the icon to white */
+}
+
+.greeting-text {
+  font-size: 20px; /* Adjust the font size */
+  font-weight: bold; /* Make the text bold */
+  color: var(--color-777777); /* Use a muted color for the text */
+}
+
+.username {
+  color: #4c00ffb6; /* Set a beautiful blue color for the username */
+}
+.compare-heading {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff; /* Change text color to white */
+  text-align: center;
+  margin-top: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  background-color: #6b8fde70; /* Change background color to deep blue */
+  padding: 20px;
+  border-radius: 10px;
+}
+
 
 
 
