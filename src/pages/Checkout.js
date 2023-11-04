@@ -33,6 +33,20 @@ const Checkout = () => {
   const [submit,setSubmit]=useState(0);
   const [number, setNumber] = useState(0);
   const [PAddress, setPAddress] = useState(0);
+  const [total, setTotal] = useState();
+
+  const fetchCartTotal = async () => {
+    const user=JSON.parse(localStorage.getItem('user'));
+
+    const userObj = JSON.parse(localStorage.getItem('user'));
+    const user_id = userObj ? userObj.id : null;
+    try {
+      const cartTotalResponse = await axios.get('http://127.0.0.1:8000/cart_details/total/' + user_id);
+      setTotal(cartTotalResponse.data.data);
+    } catch (error) {
+      console.error('Error fetching cart count:', error);
+    }
+  };
   
   const handleSubmit = async () => {
     
@@ -55,6 +69,7 @@ const Checkout = () => {
   console.log(data);
   useEffect(()=>{
     handleSubmit();
+    fetchCartTotal();
   },[])
 
 const addOrder = async ()=>{
@@ -73,6 +88,7 @@ const addOrder = async ()=>{
       zip : zip,
       address : address,
       firstname : firstname,
+      lastname : lastname,
       p_address : PAddress,
       o_panel : 1
     }
@@ -190,10 +206,10 @@ useEffect(() => {
 
               </div>
             </div>
-                \
+                
                   <div className="d-flex justify-content-between align-items-center border-bootom py-4">
                     <h4 className="total">Total</h4>
-                    <h5 className="total-price">$500</h5>
+                    <h5 className="total-price">{total}</h5>
                   </div>
            
           
@@ -208,7 +224,7 @@ useEffect(() => {
                 
                 <div className="flex-grow-1">
                 <label htmlFor="" style={{ display: 'block' }}>
-  UserName <span style={{ color: 'red' }}>*</span>
+  FirstName <span style={{ color: 'red' }}>*</span>
 </label>
                   <input
                     type="text"
@@ -216,10 +232,25 @@ useEffect(() => {
                     className="form-control"
                     onChange={(e)=>setFirstName(e.target.value)}
                     // value={firstname}
-                    value={data.username?data.username:'Loading'}
+                    // value={data.username?data.username:'Loading'}
                     required
                   />
                 </div>
+                <div className="flex-grow-1">
+                <label htmlFor="" style={{ display: 'block' }}>
+  LastName <span style={{ color: 'red' }}>*</span>
+</label>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="form-control"
+                    onChange={(e)=>setLastName(e.target.value)}
+                    // value={firstname}
+                    
+                    required
+                  />
+                </div>
+
                 <div className="flex-grow-1">
   <label htmlFor="" style={{ display: 'block' }}>
     Shipping Address <span style={{ color: 'red' }}>*</span>
@@ -234,7 +265,13 @@ useEffect(() => {
   />
 </div>
 
-<label>
+
+
+
+<div className="flex-grow-1">
+  <label htmlFor="" style={{ display: 'block' }}>
+    Permanent Address <span style={{ color: 'red' }}>*</span>
+    <label style={{fontSize:'10px', paddingLeft:'36px'}}>
   <input
     type="checkbox"
     onChange={(e) => {
@@ -246,11 +283,6 @@ useEffect(() => {
   Same as Shipping Address
 </label>
 
-
-
-<div className="flex-grow-1">
-  <label htmlFor="" style={{ display: 'block' }}>
-    Permanent Address <span style={{ color: 'red' }}>*</span>
   </label>
   <input
     type="text"

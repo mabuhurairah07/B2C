@@ -20,16 +20,16 @@ const Header = (props) => {
               
             </div>
             {props.logged_in ? (
-              <div className="text-end">
-                <FontAwesomeIcon icon={faUserCircle} className="icon2" />
-                {user && user.username ? ( // Check if user and username are available
-                  <span style={{ fontSize: "20px", fontWeight: "bold", color: "var(--color-777777)" }}>
-                    Hello: {user.username}
-                  </span>
-                ) : (
-                  <span>Loading</span>
-                )}
-              </div>
+              <div className="text-end user-greeting">
+  <FontAwesomeIcon icon={faUserCircle} className="icon2" />
+  {user && user.username ? (
+    <span className="greeting-text">
+      Hello, <span className="username">{user.username}</span>
+    </span>
+  ) : (
+    <span>Loading</span>
+  )}
+</div>
             ) : (
               <div></div>
             )}
@@ -42,46 +42,48 @@ const Header = (props) => {
           <div className="row align-items-center">
           <div className="col-2">
   <h1 className="d-flex align-items-center">
-    <Link to="/" className="text-black" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-      <img
-        src="/images/home/icon.png"
-        alt="icon"
-        style={{ width: '30px', marginRight: '10px' }}
-      />
-      EasyBay
-    </Link>
+  <Link to="/" className="logo-link">
+  <img
+    src="/images/home/icon.png"
+    alt="icon"
+    className="logo-icon"
+  />
+  <span className="logo-text">EasyBay</span>
+</Link>
   </h1>
 </div>
             <div className="col-5"></div>
             <div className="col-5">
               <div className="header-upper-links d-flex align-items-center justify-content-between">
-                <div>
+                {/* <div>
                   <Link to="/compare-product" className="d-flex align-items-center gap-10 text-white">
                     <img src={compare} alt="compare" />
                     <p className="mb-0">
                       Compare 
                     </p>
                   </Link>
-                </div>
-                <div>
-                  <Link to="/wishlist" className="d-flex align-items-center gap-10 text-white">
-                    <img src={wishlist} alt="wishlist" />
-                    <p className="mb-0">
-                    wishlist
-                    </p>
-                  </Link>
-                </div>
+                </div> */}
+
+           
+
+                
+                <Link to="/wishlist" className="d-flex align-items-center gap-10 text-white">
+    <img src={wishlist} alt="wishlist" style={{ width: '30px' }} />
+    <p className="mb-0" style={{fontSize:'20px'}}>Wishlist</p>
+  </Link>
+                
                 {props.logged_in ? (
-                  <div className="d-flex align-items-center gap-10 text-white">
-                    <button
-                      className="btn btn-secondary bg-transparent border-0"
-                      id="dropdownMenuButton1"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      <FontAwesomeIcon icon={faUserCheck} className="icon" />
-                      <span className="mb-0">My Account</span>
-                    </button>
+                  <div className="dropdown">
+      <button
+        className="btn btn-secondary bg-transparent border-0 text-white"
+        id="dropdownMenuButton1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <FontAwesomeIcon icon={faUserCheck} className="icon" />
+        <span className="mb-0">My Account</span>
+      </button>
+
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1" style={{ backgroundColor: "#7CB9E8" }}>
                       <li>
                         <Link className="dropdown-item text-blue" to="OrderHistoryPage">
@@ -121,10 +123,11 @@ const Header = (props) => {
                     </div>
                   </Link>
                 </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        
       </header>
 
       <header className="header-bottom py-3">

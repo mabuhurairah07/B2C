@@ -11,7 +11,6 @@ const OrderHistoryPage = () => {
   const navigation = useNavigate();
 
   const [orders, setOrders] = useState([]);
-  const [currentRating, setCurrentRating] = useState(0);
 
   useEffect(() => {
     getAllProducts();
@@ -24,7 +23,9 @@ const OrderHistoryPage = () => {
       );
 
       if (!response.data.error) {
-        setOrders(response.data.data);
+        // Add a 'rating' property to each order object
+        const ordersWithRating = response.data.data.map(order => ({ ...order, rating: 0 }));
+        setOrders(ordersWithRating);
       } else {
         alert(response.msg);
       }
@@ -33,13 +34,13 @@ const OrderHistoryPage = () => {
     }
   };
 
-  const handleFeedback = async (pr_id) => {
+  const handleFeedback = async (pr_id, rating) => {
     try {
       if (user_id !== null) {
         const response = await axios.post('http://127.0.0.1:8000/products/feedback/', {
           product: pr_id,
           user: user_id,
-          stars: currentRating
+          stars: rating // Use the provided rating parameter
         });
 
         if (!response.data.error) {
@@ -79,7 +80,6 @@ const OrderHistoryPage = () => {
     });
 
     setOrders(updatedOrders);
-    setCurrentRating(rating);
   };
 
   const formatOrderTime = (orderTime) => {
@@ -109,7 +109,7 @@ const OrderHistoryPage = () => {
                 onChange={(newRating) => handleRatingClick(order, newRating)}
               />
             </div>
-            <button onClick={() => handleFeedback(order.product.p_id)}>Rate</button>
+            <button onClick={() => handleFeedback(order.product.p_id, order.rating)}>Rate</button>
           </div>
         ))}
       </div>

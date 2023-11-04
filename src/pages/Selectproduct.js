@@ -97,8 +97,10 @@ setFilteredProducts(filtered);
   return (
     <>
       <Meta title={"Compare select product"} />
-      <BreadCrumb title="Select Product for Compare" />
+      {/* <BreadCrumb title="" /> */}
       {/* Your other components and JSX here... */}
+      <h1 className="compare-heading">Select Product for Compare</h1>
+<br /> <br />
       <div className="row">
             {filteredProducts.map((product) => (
         <CompareCard
